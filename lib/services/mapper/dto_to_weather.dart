@@ -2,12 +2,15 @@ import 'package:weather_app/models/weather_info.dart';
 import 'package:weather_app/models/hourly.dart';
 import "package:collection/collection.dart";
 
+import '../../util/formatter.dart';
+
 List<WeatherForecast> getWeatherForecast(Hourly hourly) {
   List<WeatherInfo> infoList = [];
   for (final (index, temp) in hourly.temperature.indexed) {
-    List<String> dateTime = hourly.time[index].split("T");
+    String date = hourly.time[index];
+    List<String> dateTime = date.split("T");
     infoList.add(WeatherInfo(
-        date: dateTime[0],
+        date: getDateString(date),
         timeOfDay: dateTime[1],
         temperature: temp,
         weatherCode: hourly.weatherCode[index]));

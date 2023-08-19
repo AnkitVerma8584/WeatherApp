@@ -14,19 +14,19 @@ class TemperatureCard extends StatelessWidget {
         height: 120,
         width: 100,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.blue[900],
           borderRadius: BorderRadius.circular(24),
         ),
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Text(info.timeOfDay, style: const TextStyle(color: Colors.grey)),
+          Text(info.timeOfDay, style: TextStyle(color: Colors.grey[100])),
           SvgPicture.asset(
             getWeatherType(info.weatherCode).icon,
-            height: 50,
+            height: 40,
           ),
           Text(
             "${info.temperature}°C",
-            style: const TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.grey[100]),
           )
         ]),
       ),

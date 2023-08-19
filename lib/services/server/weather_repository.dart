@@ -7,8 +7,10 @@ import '../location/current_location.dart';
 Future<WeatherDTO> getCurrentWeather() async {
   MyLocation location = await getCurrentLocation();
   if (location.position != null) {
-    return await fetchWeather(location.position!);
+    return await fetchWeather(
+        latitude: location.position!.latitude,
+        longitude: location.position!.longitude);
   } else {
-    return Future.error("Cannot fetch data");
+    return await fetchWeather();
   }
 }
