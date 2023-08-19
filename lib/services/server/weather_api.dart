@@ -1,16 +1,16 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/models/weather_dto.dart';
 import 'dart:convert';
 
-import 'package:weather_app/services/mapper/dto_to_weather.dart';
-
-Future<WeatherDTO> fetchWeather() async {
+Future<WeatherDTO> fetchWeather(Position position) async {
   // https://api.open-meteo.com/v1/forecast?latitude=22.5626&longitude=88.363&hourly=temperature_2m
   //https://api.open-meteo.com/v1/forecast?latitude=22.5626&longitude=88.363&hourly=temperature_2m,precipitation_probability,weathercode&daily=weathercode&current_weather=true&timezone=auto
   //https://api.open-meteo.com/v1/forecast?latitude=22.5626&longitude=88.363&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto&forecast_days=1
+
   Map<String, String> queries = {
-    "latitude": "22.5626",
-    "longitude": "88.363",
+    "latitude": position.latitude.toString(),
+    "longitude": position.longitude.toString(),
     "hourly": "temperature_2m,precipitation_probability,weathercode",
     "daily": "weathercode,precipitation_sum",
     "current_weather": "true",

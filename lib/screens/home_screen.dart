@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/components/temp_card.dart';
 import 'package:weather_app/models/weather_dto.dart';
 import 'package:weather_app/models/weather_info.dart';
 import 'package:weather_app/screens/widgets/current_weather.dart';
 import 'package:weather_app/screens/widgets/temperature_graph.dart';
 import 'package:weather_app/services/mapper/dto_to_weather.dart';
-import 'package:weather_app/services/weather_api.dart';
 import 'package:weather_app/util/weather_type.dart';
 import '../components/bottom_nav.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
+import '../services/server/weather_repository.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,7 +41,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<WeatherDTO>(
-        future: fetchWeather(),
+        future: getCurrentWeather(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator.adaptive());

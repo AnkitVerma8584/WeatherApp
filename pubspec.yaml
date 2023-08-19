@@ -17,6 +17,7 @@ dependencies:
   google_fonts: ^5.1.0
   fl_chart: ^0.63.0
   simple_gradient_text: ^1.2.4
+  geolocator: ^10.0.0
   
 dev_dependencies:
   flutter_test:
